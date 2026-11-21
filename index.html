@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d18">
+<title>Solo Leveling Training</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d18;color:#eaf2ff;font-family:Arial,sans-serif;padding-bottom:35px}
+header{padding:25px 20px;background:linear-gradient(135deg,#101d36,#080d18);border-bottom:1px solid #173e67}
+.logo{color:#49baff;font-size:12px;letter-spacing:4px;font-weight:bold}
+h1{font-size:27px;margin:12px 0 4px}
+.subtitle{color:#8499b8;font-size:13px}
+main{max-width:600px;margin:auto;padding:16px}
+.card{background:#101a2a;border:1px solid #203957;border-radius:13px;padding:17px;margin-bottom:15px}
+.label{font-size:11px;color:#63baff;letter-spacing:2px;font-weight:bold}
+.level{display:flex;align-items:center;justify-content:space-between;margin:14px 0}
+.level strong{font-size:38px;color:#54c5ff}
+.rank{border:1px solid #398fce;border-radius:8px;padding:8px 13px;color:#68c8ff;font-weight:bold}
+.bar{height:10px;background:#26354a;border-radius:20px;overflow:hidden;margin:12px 0}
+.fill{height:100%;background:linear-gradient(90deg,#1679ed,#5de0ff);width:0%;transition:.3s}
+.small{font-size:12px;color:#94a9c3}
+h2{font-size:18px;margin:0 0 14px}
+.mission{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #23334a}
+.mission:last-child{border:0}
+.mission input{width:19px;height:19px;accent-color:#36baff}
+.mission div{flex:1;font-size:14px}
+.mission small{display:block;color:#8da5c3;margin-top:5px}
+button{border:0;border-radius:9px;padding:12px;background:#147ac5;color:white;font-weight:bold;font-size:14px;cursor:pointer}
+button:disabled{background:#334458;color:#91a0b4}
+.secondary{background:#23354b}
+.exercise{padding:13px 0;border-bottom:1px solid #26354a}
+.exercise:last-child{border:0}
+.exercise strong{display:block;margin-bottom:6px}
+.exercise p{font-size:13px;color:#a5b7d0;line-height:1.5;margin:5px 0}
+.exercise button{margin-top:8px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#15243a;border-radius:9px;padding:13px;text-align:center}
+.stat strong{display:block;color:#56c5ff;font-size:23px;margin:5px}
+.stat small{color:#91a7c1}
+nav{display:flex;gap:7px;margin-bottom:15px}
+nav button{flex:1;padding:11px 4px;background:#18283d;font-size:12px}
+nav button.active{background:#126fb2}
+.hidden{display:none}
+.notice{font-size:12px;color:#92a8c4;line-height:1.5}
+footer{text-align:center;color:#536984;font-size:11px;padding:20px}
+</style>
+</head>
+<body>
+<header>
+ <div class="logo">SYSTEM • HUNTER PROTOCOL</div>
+ <h1>SOLO LEVELING</h1>
+ <div class="subtitle">TRAINING SYSTEM · TU CAMINO COMIENZA HOY</div>
+</header>
+<main>
+ <section class="card">
+  <div class="label">ESTADO DEL CAZADOR</div>
+  <div class="level">
+   <div><div class="small">NIVEL ACTUAL</div><strong id="level">1</strong></div>
+   <div class="rank" id="rank">RANGO E</div>
+  </div>
+  <div class="bar"><div class="fill" id="xpbar"></div></div>
+  <div class="small" id="xptext">0 / 100 XP</div>
+  <p class="notice" id="message">El sistema te da la bienvenida, cazador.</p>
+ </section>
+
+ <div class="stats">
+  <div class="stat"><small>EXPERIENCIA TOTAL</small><strong id="totalxp">0</strong><small>XP acumulados</small></div>
+  <div class="stat"><small>ENTRENAMIENTOS</small><strong id="sessions">0</strong><small>Sesiones completadas</small></div>
+ </div>
+
+ <nav style="margin-top:18px">
+  <button class="active" onclick="showTab('home',this)">INICIO</button>
+  <button onclick="showTab('training',this)">ENTRENAR</button>
+  <button onclick="showTab('missions',this)">MISIONES</button>
+ </nav>
+
+ <section id="home">
+  <div class="card">
+   <div class="label">OBJETIVO DEL CAZADOR</div>
+   <h2 style="margin-top:12px">Construye tu fuerza.</h2>
+   <p class="notice">La constancia supera a la intensidad. Cada entrenamiento es un paso hacia tu siguiente nivel.</p>
+  </div>
+  <div class="card">
+   <h2>Registro de actividad</h2>
+   <div id="history" class="notice">Todavía no tienes entrenamientos registrados.</div>
+  </div>
+ </section>
+
+ <section id="training" class="hidden">
+  <div class="card">
+   <div class="label">ENTRENAMIENTO DE FUERZA</div>
+   <h2 style="margin-top:12px">Misión: Despertar</h2>
+   <p class="notice">Rutina inicial de cuerpo completo. Haz los ejercicios con control y descansa cuando lo necesites.</p>
+   <div class="exercise">
+    <strong>01 · Sentadillas</strong>
+    <p>2 series de 8 repeticiones.</p>
+   </div>
+   <div class="exercise">
+    <strong>02 · Flexiones adaptadas</strong>
+    <p>2 series de 5 repeticiones. Puedes apoyarte en una pared o superficie firme.</p>
+   </div>
+   <div class="exercise">
+    <strong>03 · Puente de glúteos</strong>
+    <p>2 series de 10 repeticiones.</p>
+   </div>
+   <div class="exercise">
+    <strong>04 · Bird-dog</strong>
+    <p>2 series de 6 repeticiones por lado.</p>
+   </div>
+   <div class="exercise">
+    <strong>05 · Plancha adaptada</strong>
+    <p>2 series de 15 segundos.</p>
+   </div>
+   <p class="notice">Descansa 60–90 segundos entre series. Haz esta rutina 2 o 3 días por semana, dejando días de recuperación. Si sientes dolor, detente.</p>
+   <button style="width:100%;margin-top:12px" onclick="completeWorkout()">COMPLETAR ENTRENAMIENTO +50 XP</button>
+  </div>
+ </section>
+
+ <section id="missions" class="hidden">
+  <div class="card">
+   <div class="label">MISIONES DIARIAS</div>
+   <h2 style="margin-top:12px">Desafíos del día</h2>
+   <p class="notice">Completa tus misiones para ganar experiencia. Cada misión se puede reclamar una vez al día.</p>
+   <div id="missionlist"></div>
+  </div>
+ </section>
+
+ <div class="card">
+  <div class="label">REGLAMENTO DEL SISTEMA</div>
+  <p class="notice">• Escucha a tu cuerpo.<br>• Mantén una técnica correcta.<br>• Duerme y descansa lo suficiente.<br>• Aumenta la dificultad poco a poco.<br>• La recuperación también es progreso.</p>
+ </div>
+ <button class="secondary" style="width:100%" onclick="resetGame()">Reiniciar progreso</button>
+</main>
+<footer>SOLO LEVELING TRAINING · SYSTEM VERSION 1.0</footer>
+
+<script>
+const missions=[
+ {name:"Hidratación",desc:"Mantén una hidratación adecuada durante el día.",xp:10},
+ {name:"Movimiento",desc:"Dedica unos minutos a caminar o moverte.",xp:10},
+ {name:"Recuperación",desc:"Reserva tiempo para descansar.",xp:10},
+ {name:"Disciplina",desc:"Dedica 10 minutos a aprender algo nuevo.",xp:10}
+];
+let data=JSON.parse(localStorage.getItem("hunterSave")||"null")||{
+ xp:0,total:0,sessions:0,history:[],claimed:[],day:new Date().toDateString()
+};
+function save(){localStorage.setItem("hunterSave",JSON.stringify(data))}
+function refreshDay(){
+ const today=new Date().toDateString();
+ if(data.day!==today){data.day=today;data.claimed=[];save()}
+}
+function level(){return Math.floor(data.xp/100)+1}
+function rank(){
+ let l=level();
+ return l>=30?"RANGO S":l>=20?"RANGO A":l>=12?"RANGO B":l>=7?"RANGO C":l>=4?"RANGO D":"RANGO E";
+}
+function render(){
+ refreshDay();
+ document.getElementById("level").textContent=level();
+ document.getElementById("rank").textContent=rank();
+ document.getElementById("totalxp").textContent=data.total;
+ document.getElementById("sessions").textContent=data.sessions;
+ document.getElementById("xpbar").style.width=(data.xp%100)+"%";
+ document.getElementById("xptext").textContent=(data.xp%100)+" / 100 XP para el siguiente nivel";
+ document.getElementById("message").textContent=level()>1?"¡Tu poder está creciendo! Sigue avanzando.":"Tu aventura comienza. Cada paso cuenta.";
+ document.getElementById("history").innerHTML=data.history.length?data.history.slice(-5).reverse().map(x=>"• "+x).join("<br>"):"Todavía no tienes entrenamientos registrados.";
+ document.getElementById("missionlist").innerHTML=missions.map((m,i)=>`
+ <div class="mission">
+ <div><strong>${m.name}</strong><small>${m.desc} · +${m.xp} XP</small></div>
+ <button ${data.claimed.includes(i)?"disabled":""} onclick="claim(${i})">${data.claimed.includes(i)?"LISTO":"RECLAMAR"}</button>
+ </div>`).join("");
+}
+function addXP(n){
+ data.xp+=n;data.total+=n;save();render();
+}
+function claim(i){
+ refreshDay();
+ if(data.claimed.includes(i))return;
+ data.claimed.push(i);addXP(missions[i].xp);
+}
+function completeWorkout(){
+ data.sessions++;
+ data.history.push(new Date().toLocaleDateString("es-CO")+" · Entrenamiento de fuerza");
+ addXP(50);
+ alert("¡Misión completada! Has ganado 50 XP.");
+}
+function showTab(id,btn){
+ ["home","training","missions"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));
+ document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+ btn.classList.add("active");
+}
+function resetGame(){
+ if(confirm("¿Seguro que quieres borrar todo tu progreso?")){
+ data={xp:0,total:0,sessions:0,history:[],claimed:[],day:new Date().toDateString()};
+ save();render();
+ }
+}
+render();
+</script>
+</body>
+</html>
