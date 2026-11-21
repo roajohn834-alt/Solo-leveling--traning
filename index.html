@@ -3,201 +3,293 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d18">
-<title>Solo Leveling Training</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050914">
+<title>Solo Leveling System 2.0</title>
 <style>
+:root{--blue:#32caff;--cyan:#8ceaff;--bg:#050914;--panel:#0b1628;--line:#174b70;--muted:#819bb9;--white:#eaf7ff}
 *{box-sizing:border-box}
-body{margin:0;background:#080d18;color:#eaf2ff;font-family:Arial,sans-serif;padding-bottom:35px}
-header{padding:25px 20px;background:linear-gradient(135deg,#101d36,#080d18);border-bottom:1px solid #173e67}
-.logo{color:#49baff;font-size:12px;letter-spacing:4px;font-weight:bold}
-h1{font-size:27px;margin:12px 0 4px}
-.subtitle{color:#8499b8;font-size:13px}
-main{max-width:600px;margin:auto;padding:16px}
-.card{background:#101a2a;border:1px solid #203957;border-radius:13px;padding:17px;margin-bottom:15px}
-.label{font-size:11px;color:#63baff;letter-spacing:2px;font-weight:bold}
-.level{display:flex;align-items:center;justify-content:space-between;margin:14px 0}
-.level strong{font-size:38px;color:#54c5ff}
-.rank{border:1px solid #398fce;border-radius:8px;padding:8px 13px;color:#68c8ff;font-weight:bold}
-.bar{height:10px;background:#26354a;border-radius:20px;overflow:hidden;margin:12px 0}
-.fill{height:100%;background:linear-gradient(90deg,#1679ed,#5de0ff);width:0%;transition:.3s}
-.small{font-size:12px;color:#94a9c3}
-h2{font-size:18px;margin:0 0 14px}
-.mission{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #23334a}
-.mission:last-child{border:0}
-.mission input{width:19px;height:19px;accent-color:#36baff}
-.mission div{flex:1;font-size:14px}
-.mission small{display:block;color:#8da5c3;margin-top:5px}
-button{border:0;border-radius:9px;padding:12px;background:#147ac5;color:white;font-weight:bold;font-size:14px;cursor:pointer}
-button:disabled{background:#334458;color:#91a0b4}
-.secondary{background:#23354b}
-.exercise{padding:13px 0;border-bottom:1px solid #26354a}
+body{margin:0;background:radial-gradient(ellipse at top,#102a48 0,#050914 48%);color:var(--white);font-family:Arial,sans-serif;padding-bottom:40px}
+header{text-align:center;padding:28px 15px 23px;border-bottom:1px solid var(--line);background:#061020}
+.logo{letter-spacing:5px;color:var(--cyan);font-size:11px;font-weight:bold}
+h1{font-size:28px;letter-spacing:2px;margin:12px 0 5px;text-shadow:0 0 18px #159cff}
+.sub{color:var(--muted);font-size:11px;letter-spacing:2px}
+main{max-width:650px;margin:auto;padding:15px}
+.card{background:linear-gradient(145deg,#10223a,#081321);border:1px solid var(--line);border-radius:12px;padding:17px;margin-bottom:14px;box-shadow:0 0 14px #008cff12}
+.label{font-size:10px;letter-spacing:3px;color:var(--cyan);font-weight:bold}
+h2{font-size:17px;margin:12px 0}
+h3{font-size:14px;margin:0 0 10px}
+p{line-height:1.5}
+.muted{font-size:12px;color:var(--muted);line-height:1.6}
+.levelrow{display:flex;justify-content:space-between;align-items:center;margin:17px 0}
+.level{font-size:48px;font-weight:bold;color:var(--blue);text-shadow:0 0 16px #19aaff}
+.rank{border:1px solid var(--blue);padding:10px 13px;border-radius:5px;color:var(--cyan);font-weight:bold;box-shadow:0 0 10px #168fff33}
+.bar{height:9px;background:#172d46;border-radius:20px;overflow:hidden;margin:12px 0}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#0879e9,#78edff);box-shadow:0 0 12px var(--blue);transition:.4s}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#10243d;border:1px solid #1a4265;padding:13px;border-radius:9px;text-align:center}
+.stat strong{display:block;font-size:24px;color:var(--cyan);margin:7px}
+.stat small{font-size:10px;color:var(--muted)}
+nav{display:flex;gap:5px;margin:17px 0;overflow-x:auto}
+nav button{flex:1;white-space:nowrap;font-size:11px;padding:12px 7px}
+button{background:#0879bd;color:white;border:1px solid #36baff;border-radius:6px;padding:11px 13px;font-weight:bold;cursor:pointer}
+button:active{transform:scale(.98)}
+button:disabled{background:#24364a;color:#8292a5;border-color:#34465b}
+.secondary{background:#132942}
+.full{width:100%}
+.hidden{display:none!important}
+.tab.active{background:#0d8fe0;box-shadow:0 0 12px #168fff55}
+.attribute{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #18344e}
+.attribute:last-child{border:0}
+.attribute .info{flex:1}
+.attribute strong{color:var(--cyan);font-size:19px}
+.attribute small{display:block;color:var(--muted);font-size:11px;margin-top:4px}
+.attribute button{padding:7px 12px}
+.quest{display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid #18344e}
+.quest input{width:19px;height:19px;accent-color:#30baff}
+.quest div{flex:1;font-size:13px}
+.quest small{display:block;color:var(--muted);font-size:11px;margin-top:5px}
+.exercise{padding:13px 0;border-bottom:1px solid #18344e}
 .exercise:last-child{border:0}
-.exercise strong{display:block;margin-bottom:6px}
-.exercise p{font-size:13px;color:#a5b7d0;line-height:1.5;margin:5px 0}
-.exercise button{margin-top:8px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:#15243a;border-radius:9px;padding:13px;text-align:center}
-.stat strong{display:block;color:#56c5ff;font-size:23px;margin:5px}
-.stat small{color:#91a7c1}
-nav{display:flex;gap:7px;margin-bottom:15px}
-nav button{flex:1;padding:11px 4px;background:#18283d;font-size:12px}
-nav button.active{background:#126fb2}
-.hidden{display:none}
-.notice{font-size:12px;color:#92a8c4;line-height:1.5}
-footer{text-align:center;color:#536984;font-size:11px;padding:20px}
+.exercise strong{font-size:14px}
+.exercise p{font-size:12px;color:#a3bad3;margin:6px 0}
+.tag{display:inline-block;border:1px solid #2878a9;color:var(--cyan);padding:5px 8px;border-radius:4px;font-size:10px}
+.notice{border-left:3px solid var(--blue);padding:10px;background:#10233a;font-size:12px;line-height:1.5;color:#b7d4ec;margin:12px 0}
+.history{font-size:12px;color:#b3cce5;padding:9px 0;border-bottom:1px solid #18344e}
+footer{text-align:center;color:#536e8c;font-size:10px;padding:22px;letter-spacing:2px}
 </style>
 </head>
 <body>
 <header>
  <div class="logo">SYSTEM • HUNTER PROTOCOL</div>
  <h1>SOLO LEVELING</h1>
- <div class="subtitle">TRAINING SYSTEM · TU CAMINO COMIENZA HOY</div>
+ <div class="sub">HUNTER STATUS INTERFACE · VERSION 2.0</div>
 </header>
 <main>
  <section class="card">
-  <div class="label">ESTADO DEL CAZADOR</div>
-  <div class="level">
-   <div><div class="small">NIVEL ACTUAL</div><strong id="level">1</strong></div>
+  <div class="label">◆ HUNTER STATUS</div>
+  <div class="levelrow">
+   <div><div class="muted">NIVEL ACTUAL</div><div class="level" id="level">1</div></div>
    <div class="rank" id="rank">RANGO E</div>
   </div>
   <div class="bar"><div class="fill" id="xpbar"></div></div>
-  <div class="small" id="xptext">0 / 100 XP</div>
-  <p class="notice" id="message">El sistema te da la bienvenida, cazador.</p>
+  <div class="muted" id="xptext">0 / 100 XP</div>
+  <div class="notice" id="systemMessage">El sistema ha reconocido a un nuevo cazador.</div>
  </section>
 
- <div class="stats">
-  <div class="stat"><small>EXPERIENCIA TOTAL</small><strong id="totalxp">0</strong><small>XP acumulados</small></div>
-  <div class="stat"><small>ENTRENAMIENTOS</small><strong id="sessions">0</strong><small>Sesiones completadas</small></div>
+ <div class="grid">
+  <div class="stat"><small>EXPERIENCIA TOTAL</small><strong id="totalxp">0</strong><small>XP</small></div>
+  <div class="stat"><small>SESIONES</small><strong id="sessions">0</strong><small>Completadas</small></div>
+  <div class="stat"><small>PUNTOS DISPONIBLES</small><strong id="points">0</strong><small>Atributos</small></div>
+  <div class="stat"><small>ETAPA DE ENTRENAMIENTO</small><strong id="stage">1</strong><small>Progresión automática</small></div>
  </div>
 
- <nav style="margin-top:18px">
-  <button class="active" onclick="showTab('home',this)">INICIO</button>
-  <button onclick="showTab('training',this)">ENTRENAR</button>
-  <button onclick="showTab('missions',this)">MISIONES</button>
+ <nav>
+  <button class="tab active" onclick="tab('home',this)">ESTADO</button>
+  <button class="tab" onclick="tab('stats',this)">ATRIBUTOS</button>
+  <button class="tab" onclick="tab('training',this)">ENTRENAR</button>
+  <button class="tab" onclick="tab('quests',this)">MISIONES</button>
  </nav>
 
  <section id="home">
   <div class="card">
-   <div class="label">OBJETIVO DEL CAZADOR</div>
-   <h2 style="margin-top:12px">Construye tu fuerza.</h2>
-   <p class="notice">La constancia supera a la intensidad. Cada entrenamiento es un paso hacia tu siguiente nivel.</p>
+   <div class="label">◆ HUNTER PROFILE</div>
+   <h2>Bienvenido, cazador.</h2>
+   <p class="muted">Tu crecimiento depende de la constancia, la técnica y la recuperación. El sistema registra tu progreso.</p>
+   <div class="grid">
+    <div class="stat"><small>FUERZA</small><strong id="homeStr">5</strong></div>
+    <div class="stat"><small>RESISTENCIA</small><strong id="homeEnd">5</strong></div>
+    <div class="stat"><small>AGILIDAD</small><strong id="homeAgi">5</strong></div>
+    <div class="stat"><small>VITALIDAD</small><strong id="homeVit">5</strong></div>
+   </div>
   </div>
   <div class="card">
+   <div class="label">◆ TRAINING HISTORY</div>
    <h2>Registro de actividad</h2>
-   <div id="history" class="notice">Todavía no tienes entrenamientos registrados.</div>
+   <div id="history" class="muted">Sin registros todavía.</div>
+  </div>
+  <div class="card">
+   <div class="label">◆ SYSTEM INFORMATION</div>
+   <h2>Tu progresión</h2>
+   <p class="muted">La etapa de entrenamiento aumenta gradualmente después de acumular sesiones. No necesitas entrenar todos los días. Deja tiempo para recuperarte.</p>
+  </div>
+ </section>
+
+ <section id="stats" class="hidden">
+  <div class="card">
+   <div class="label">◆ ATTRIBUTE STATUS</div>
+   <h2>Atributos del cazador</h2>
+   <p class="muted">Distribuye los puntos que consigues al subir de nivel. Estos atributos son estadísticas del juego, no mediciones físicas.</p>
+   <div id="attributes"></div>
+   <div class="notice">Cada nuevo nivel concede 2 puntos de atributo. Elige dónde quieres invertirlos.</div>
   </div>
  </section>
 
  <section id="training" class="hidden">
   <div class="card">
-   <div class="label">ENTRENAMIENTO DE FUERZA</div>
-   <h2 style="margin-top:12px">Misión: Despertar</h2>
-   <p class="notice">Rutina inicial de cuerpo completo. Haz los ejercicios con control y descansa cuando lo necesites.</p>
-   <div class="exercise">
-    <strong>01 · Sentadillas</strong>
-    <p>2 series de 8 repeticiones.</p>
-   </div>
-   <div class="exercise">
-    <strong>02 · Flexiones adaptadas</strong>
-    <p>2 series de 5 repeticiones. Puedes apoyarte en una pared o superficie firme.</p>
-   </div>
-   <div class="exercise">
-    <strong>03 · Puente de glúteos</strong>
-    <p>2 series de 10 repeticiones.</p>
-   </div>
-   <div class="exercise">
-    <strong>04 · Bird-dog</strong>
-    <p>2 series de 6 repeticiones por lado.</p>
-   </div>
-   <div class="exercise">
-    <strong>05 · Plancha adaptada</strong>
-    <p>2 series de 15 segundos.</p>
-   </div>
-   <p class="notice">Descansa 60–90 segundos entre series. Haz esta rutina 2 o 3 días por semana, dejando días de recuperación. Si sientes dolor, detente.</p>
-   <button style="width:100%;margin-top:12px" onclick="completeWorkout()">COMPLETAR ENTRENAMIENTO +50 XP</button>
+   <div class="label">◆ DAILY TRAINING QUEST</div>
+   <h2 id="trainingTitle">Misión: Despertar</h2>
+   <span class="tag" id="difficulty">ETAPA 1 · INICIACIÓN</span>
+   <p class="muted" id="trainingDescription">Comienza con movimientos controlados y aprende la técnica.</p>
+   <div id="exercises"></div>
+   <div class="notice" id="recovery">Descansa entre series. Entrena fuerza 2 o 3 días por semana y deja días de recuperación.</div>
+   <button class="full" id="completeButton" onclick="completeWorkout()">COMPLETAR SESIÓN · +50 XP</button>
+   <p class="muted">Completa la sesión solo si realizaste los ejercicios. Detente si sientes dolor, mareo o malestar.</p>
+  </div>
+  <div class="card">
+   <div class="label">◆ AUTO PROGRESSION</div>
+   <h2>Progreso adaptativo</h2>
+   <p class="muted">El sistema ajusta gradualmente las repeticiones y series según las sesiones registradas. Si necesitas más tiempo para dominar un movimiento, mantén la etapa actual.</p>
+   <strong id="progressText" style="color:var(--cyan)">Etapa de iniciación</strong>
   </div>
  </section>
 
- <section id="missions" class="hidden">
+ <section id="quests" class="hidden">
   <div class="card">
-   <div class="label">MISIONES DIARIAS</div>
-   <h2 style="margin-top:12px">Desafíos del día</h2>
-   <p class="notice">Completa tus misiones para ganar experiencia. Cada misión se puede reclamar una vez al día.</p>
-   <div id="missionlist"></div>
+   <div class="label">◆ DAILY QUESTS</div>
+   <h2>Misiones diarias</h2>
+   <p class="muted">Completa estas actividades cotidianas y reclama experiencia una sola vez al día por misión.</p>
+   <div id="questList"></div>
   </div>
  </section>
 
  <div class="card">
-  <div class="label">REGLAMENTO DEL SISTEMA</div>
-  <p class="notice">• Escucha a tu cuerpo.<br>• Mantén una técnica correcta.<br>• Duerme y descansa lo suficiente.<br>• Aumenta la dificultad poco a poco.<br>• La recuperación también es progreso.</p>
+  <div class="label">◆ SYSTEM RULES</div>
+  <p class="muted">01. La técnica tiene prioridad.<br>02. El descanso es parte del progreso.<br>03. No entrenes con dolor.<br>04. Aumenta la dificultad gradualmente.<br>05. La constancia importa más que competir.</p>
  </div>
- <button class="secondary" style="width:100%" onclick="resetGame()">Reiniciar progreso</button>
+ <button class="secondary full" onclick="resetGame()">Reiniciar progreso</button>
 </main>
-<footer>SOLO LEVELING TRAINING · SYSTEM VERSION 1.0</footer>
+<footer>SOLO LEVELING SYSTEM 2.0 · HUNTER INTERFACE</footer>
 
 <script>
-const missions=[
- {name:"Hidratación",desc:"Mantén una hidratación adecuada durante el día.",xp:10},
- {name:"Movimiento",desc:"Dedica unos minutos a caminar o moverte.",xp:10},
- {name:"Recuperación",desc:"Reserva tiempo para descansar.",xp:10},
- {name:"Disciplina",desc:"Dedica 10 minutos a aprender algo nuevo.",xp:10}
+const old=JSON.parse(localStorage.getItem("hunterSave")||"null");
+let data=old||{};
+data.xp=data.xp||0;
+data.total=data.total||data.xp;
+data.sessions=data.sessions||0;
+data.history=data.history||[];
+data.claimed=data.claimed||[];
+data.day=data.day||new Date().toDateString();
+data.points=data.points||0;
+data.attrs=data.attrs||{str:5,end:5,agi:5,vit:5};
+data.stage=data.stage||1;
+data.workoutDates=data.workoutDates||[];
+data.claimedDay=data.claimedDay||data.day;
+const quests=[
+ {name:"Movimiento diario",desc:"Dedica un rato a caminar o moverte.",xp:10},
+ {name:"Hidratación",desc:"Bebe agua regularmente durante el día.",xp:10},
+ {name:"Recuperación",desc:"Respeta tu descanso y sueño.",xp:10},
+ {name:"Aprendizaje",desc:"Dedica 10 minutos a aprender algo nuevo.",xp:10}
 ];
-let data=JSON.parse(localStorage.getItem("hunterSave")||"null")||{
- xp:0,total:0,sessions:0,history:[],claimed:[],day:new Date().toDateString()
-};
+const tiers=[
+ {name:"INICIACIÓN",desc:"Aprende los movimientos y controla la técnica.",sets:2,reps:8,push:5,bridge:10,bird:5,plank:15},
+ {name:"ADAPTACIÓN",desc:"Consolida la técnica antes de aumentar el volumen.",sets:2,reps:10,push:6,bridge:12,bird:6,plank:20},
+ {name:"DESARROLLO",desc:"Avanza con movimientos controlados y descansos adecuados.",sets:2,reps:12,push:8,bridge:14,bird:8,plank:20},
+ {name:"CONSOLIDACIÓN",desc:"Mantén la calidad del movimiento y progresa sin prisa.",sets:3,reps:10,push:8,bridge:12,bird:8,plank:25}
+];
 function save(){localStorage.setItem("hunterSave",JSON.stringify(data))}
 function refreshDay(){
- const today=new Date().toDateString();
+ let today=new Date().toDateString();
  if(data.day!==today){data.day=today;data.claimed=[];save()}
 }
 function level(){return Math.floor(data.xp/100)+1}
 function rank(){
- let l=level();
- return l>=30?"RANGO S":l>=20?"RANGO A":l>=12?"RANGO B":l>=7?"RANGO C":l>=4?"RANGO D":"RANGO E";
+ let n=level();
+ return n>=30?"S":n>=20?"A":n>=12?"B":n>=7?"C":n>=4?"D":"E";
+}
+function addXP(n){
+ let before=level();
+ data.xp+=n;
+ data.total+=n;
+ let gained=level()-before;
+ if(gained>0){data.points+=gained*2;alert("¡SUBIDA DE NIVEL! Has ganado "+gained*2+" puntos de atributo.")}
+ save();render();
 }
 function render(){
  refreshDay();
- document.getElementById("level").textContent=level();
- document.getElementById("rank").textContent=rank();
- document.getElementById("totalxp").textContent=data.total;
- document.getElementById("sessions").textContent=data.sessions;
+ let n=level(),r=rank();
+ document.getElementById("level").textContent=n;
+ document.getElementById("rank").textContent="RANGO "+r;
  document.getElementById("xpbar").style.width=(data.xp%100)+"%";
  document.getElementById("xptext").textContent=(data.xp%100)+" / 100 XP para el siguiente nivel";
- document.getElementById("message").textContent=level()>1?"¡Tu poder está creciendo! Sigue avanzando.":"Tu aventura comienza. Cada paso cuenta.";
- document.getElementById("history").innerHTML=data.history.length?data.history.slice(-5).reverse().map(x=>"• "+x).join("<br>"):"Todavía no tienes entrenamientos registrados.";
- document.getElementById("missionlist").innerHTML=missions.map((m,i)=>`
- <div class="mission">
- <div><strong>${m.name}</strong><small>${m.desc} · +${m.xp} XP</small></div>
- <button ${data.claimed.includes(i)?"disabled":""} onclick="claim(${i})">${data.claimed.includes(i)?"LISTO":"RECLAMAR"}</button>
+ document.getElementById("totalxp").textContent=data.total;
+ document.getElementById("sessions").textContent=data.sessions;
+ document.getElementById("points").textContent=data.points;
+ document.getElementById("stage").textContent=data.stage;
+ document.getElementById("systemMessage").textContent=n>1?"Nivel "+n+" alcanzado. Tu progreso continúa.":"El sistema te da la bienvenida. Tu aventura comienza.";
+ document.getElementById("homeStr").textContent=data.attrs.str;
+ document.getElementById("homeEnd").textContent=data.attrs.end;
+ document.getElementById("homeAgi").textContent=data.attrs.agi;
+ document.getElementById("homeVit").textContent=data.attrs.vit;
+ document.getElementById("history").innerHTML=data.history.length?data.history.slice(-8).reverse().map(x=>'<div class="history">'+x+'</div>').join(""):"Sin registros todavía.";
+ renderAttrs();renderQuests();renderTraining();
+}
+function renderAttrs(){
+ let names={str:["Fuerza","Potencia en movimientos"],end:["Resistencia","Capacidad de mantener el esfuerzo"],agi:["Agilidad","Coordinación y movilidad"],vit:["Vitalidad","Constancia y recuperación"]};
+ document.getElementById("attributes").innerHTML=Object.keys(names).map(k=>`
+ <div class="attribute">
+ <div class="info"><strong>${names[k][0]}</strong><small>${names[k][1]}</small></div>
+ <strong>${data.attrs[k]}</strong>
+ <button onclick="allocate('${k}')" ${data.points<1?"disabled":""}>+1</button>
  </div>`).join("");
 }
-function addXP(n){
- data.xp+=n;data.total+=n;save();render();
+function allocate(k){
+ if(data.points<1)return;
+ data.attrs[k]++;data.points--;save();render();
 }
-function claim(i){
+function renderQuests(){
+ document.getElementById("questList").innerHTML=quests.map((q,i)=>`
+ <div class="quest">
+ <div><strong>${q.name}</strong><small>${q.desc} · +${q.xp} XP</small></div>
+ <button onclick="claimQuest(${i})" ${data.claimed.includes(i)?"disabled":""}>${data.claimed.includes(i)?"LISTA":"RECLAMAR"}</button>
+ </div>`).join("");
+}
+function claimQuest(i){
  refreshDay();
  if(data.claimed.includes(i))return;
- data.claimed.push(i);addXP(missions[i].xp);
+ data.claimed.push(i);save();addXP(quests[i].xp);
+}
+function renderTraining(){
+ let t=tiers[data.stage-1];
+ document.getElementById("difficulty").textContent="ETAPA "+data.stage+" · "+t.name;
+ document.getElementById("trainingTitle").textContent="Misión: "+(data.stage===1?"Despertar":data.stage===2?"Adaptación":data.stage===3?"Evolución":"Consolidación");
+ document.getElementById("trainingDescription").textContent=t.desc;
+ document.getElementById("progressText").textContent="Etapa "+data.stage+" · "+t.name;
+ let ex=[
+ ["Sentadillas",t.sets+" series × "+t.reps+" repeticiones","Movimiento controlado."],
+ ["Flexiones adaptadas",t.sets+" series × "+t.push+" repeticiones","Pared o superficie firme si lo necesitas."],
+ ["Puente de glúteos",t.sets+" series × "+t.bridge+" repeticiones","Mantén el control del movimiento."],
+ ["Bird-dog",t.sets+" series × "+t.bird+" por lado","Mantén el equilibrio."],
+ ["Plancha adaptada",t.sets+" series × "+t.plank+" segundos","Puedes apoyar las rodillas."]
+ ];
+ document.getElementById("exercises").innerHTML=ex.map((e,i)=>`
+ <div class="exercise"><strong>0${i+1} · ${e[0]}</strong><p>${e[1]}</p><p>${e[2]}</p></div>`).join("");
 }
 function completeWorkout(){
+ let today=new Date().toDateString();
+ if(data.workoutDates.includes(today)){alert("Ya registraste una sesión hoy. Deja tiempo para recuperarte.");return}
+ data.workoutDates.push(today);
  data.sessions++;
- data.history.push(new Date().toLocaleDateString("es-CO")+" · Entrenamiento de fuerza");
- addXP(50);
- alert("¡Misión completada! Has ganado 50 XP.");
+ data.history.push(new Date().toLocaleDateString("es-CO")+" · Sesión de fuerza · Etapa "+data.stage);
+ if(data.sessions>=3 && data.stage===1)data.stage=2;
+ else if(data.sessions>=7 && data.stage===2)data.stage=3;
+ else if(data.sessions>=12 && data.stage===3)data.stage=4;
+ save();addXP(50);
+ alert("MISIÓN COMPLETADA · +50 XP. ¡Buen trabajo, cazador!");
 }
-function showTab(id,btn){
- ["home","training","missions"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));
- document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+function tab(id,btn){
+ ["home","stats","training","quests"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));
+ document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
  btn.classList.add("active");
 }
 function resetGame(){
- if(confirm("¿Seguro que quieres borrar todo tu progreso?")){
- data={xp:0,total:0,sessions:0,history:[],claimed:[],day:new Date().toDateString()};
+ if(!confirm("¿Deseas reiniciar todo tu progreso? Esta acción no se puede deshacer."))return;
+ data={xp:0,total:0,sessions:0,history:[],claimed:[],day:new Date().toDateString(),points:0,attrs:{str:5,end:5,agi:5,vit:5},stage:1,workoutDates:[]};
  save();render();
- }
 }
 render();
 </script>
 </body>
 </html>
+
+  
